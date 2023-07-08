@@ -6,8 +6,8 @@ services:
     container_name: barak_mysql
     command: mysqld --innodb_use_native_aio=0
     environment:
-      - MYSOL DATABASE=super-app
-      - MYSQL_ROOT_PASSWORD=password
+      MYSQL_DATABASE: super-app
+      MYSQL_ROOT_PASSWORD: password
     restart: always
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "--silent"]
@@ -22,10 +22,10 @@ services:
     build: ./node
     container_name: barak_node
     environment:
-      - DB_HOST=db
-      - DB_USER=root
-      - DB_PASSWORD=password
-      - DB_NAME=super-app
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: password
+      DB_NAME: super-app
     ports:
       - 3000:3000
     depends_on:
