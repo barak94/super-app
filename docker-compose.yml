@@ -34,6 +34,11 @@ services:
   php:
     build: ./php
     container_name: barak_php
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: password
+      DB_NAME: super-app
     ports:
       - 80:80
     volumes:
